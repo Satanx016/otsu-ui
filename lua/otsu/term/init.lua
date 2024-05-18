@@ -153,6 +153,8 @@ end
 api.nvim_create_autocmd("TermClose", {
 	callback = function(args)
 		save_term_info(args.buf, nil)
+
+		-- close term window on shell exit
 		local win = vim.api.nvim_get_current_win()
 		vim.api.nvim_win_close(win, true)
 	end,
